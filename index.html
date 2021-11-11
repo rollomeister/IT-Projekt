@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>IT Projekt Proovitöö</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/bootstrap-input-spinner.js"></script>
+        <script>$("input[type='number']").inputSpinner();</script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+        
+        
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md navbar-light py-4">
+            <div class="container-fluid">
+                <div class="col-4 order-1 col-md-2 text-center col-lg-3">
+                    <a class="navbar-brand brand align-center mx-auto" href="#">Logo</a>
+                </div>
+                <div class="col-12 order-4 order-md-2 col-md-8 col-lg-6 text-end">
+                    <div class="collapse navbar-collapse navbar-supported-content">
+                        <ul class="navbar-nav mx-auto gap-4">
+                            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Contacts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4 order-2 col-md-2 col-lg-3 text-center">
+                    <button class="btn btn-primary rounded-pill px-4 text-nowrap" id="cart-button-navbar" onclick="openCheckout()">CART 0.00€</button>
+                </div>
+                <div class="col-4 order-3 text-end">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-supported-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>   
+    
+        <!-- BREADCRUMBS -->
+        <div class="container-fluid text-center text-white" id="breadcrumbs-wrapper">    
+            <div class="row">
+                <div class="col py-2">
+                    <p class="my-auto" id="breadcrumbs">Home / --</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMAGES & PRODUCT -->
+        <div class="container mt-5 pt-3">
+          <div class="row gap-4">
+            <div class="col-md-5 col-sm-12 order-2 order-md-1">
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid mx-auto" src alt="Large image" id="product-image1">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4 thumbnails">
+                        <img class="mx-auto" src="" alt="Image2" id="product-image2" onclick=clickImage(2)>
+                    </div>
+                    <div class="col-4 thumbnails">
+                        <img class="mx-auto" src="" alt="Image3" id="product-image3" onclick=clickImage(3)>
+                    </div>
+                    <div class="col-4 thumbnails">
+                        <img class="mx-auto" src="" alt="Image4" id="product-image4" onclick=clickImage(4)>
+                    </div>
+                </div>
+            </div>
+              
+            <!-- PRODUCT -->
+            <div class="col-md-6 col-sm-12 text-left mx-auto order-1 order-md-2"> 
+              <h3 id="product-name">--</h3>  
+                <div class="row">
+                    <div class="col">
+                        <p class="text-primary" id="product-price">--</p>
+                        <hr class="mb-0">
+                        <hr class="mt-1">
+                        <p id="product-description-small">--</p>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col properties" id="product-properties">
+                    </div>
+                </div>
+                
+                <div class="row my-5 pb-sm-5 mx-auto">
+                    <div class="col-6 col-sm- col-md-4 col-lg-3 col-xl-2 my-auto">
+                        
+                        <!-- QUANTITY PICKER - SEE ON NETIST VÕETUD -->
+                        <div class="def-number-input number-input">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                            <div id="product-quantity-wrapper">
+                                <!--<input class="quantity" min="0" name="product-quantity" value="1" type="number">-->
+                            </div>
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn btn-primary px-4 py-2 rounded-pill cart-button text-nowrap" id="add-to-cart-button" onclick="addToCart()">ADD TO CART</button>
+                    </div>                
+                </div>   
+                <p id="product-SKU">SKU: </p>
+                <p id="product-categories">Categories: </p>
+                <p id="product-tags">Tags: </p>
+            </div>
+          </div>
+        </div>
+    
+
+        <!-- DESCRIPTION & REVIEWS -->
+        <div class="container my-5 pb-5" id="reviews-description-anchor">    
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col">
+                            <a href="#reviews-description-anchor" class="text-decoration-none" id="description-link" onclick="showDescription()">Description</a>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <a href="#reviews-description-anchor" class="text-decoration-none text-dark" id="reviews-link" onclick="showReviews()">Reviews (0)</a>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-9 border p-5">
+                    <h3 id="description-review-title">Description</h3>
+                    <div class="row" id="description-wrapper">
+                        <div class="col" >
+                            <p id="product-description">--</p>
+                        </div>
+                    </div>
+                    <div class="row" id="review-wrapper">
+                        <form action="">
+                            <div class="form-group">
+                                <textarea class="form-control" id="review" rows=3 placeholder="Enter review" required></textarea>
+                            </div>
+                            <div class="form-group form-inline my-2">
+                                <label for="user-name">Name (optional):</label>
+                                <input type="text" class="form-control" id="user-name" placeholder="Enter name">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-default  text-white w-50 my-3" onclick="submitReview(false)">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                        <h4 class="my-4">Other Reviews</h4>
+                        <div class="col" id="user-reviews-wrapper">  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHECKOUT WRAPPER -->
+        <div class="checkout-wrapper p-3" id="checkout-wrapper">
+            <div class="row align-top mb-4 pb-2">
+                <div class="col text-start">
+                    <p class="fw-bold">CART</p>
+                </div>
+                <div class="col text-end">
+                    <a href="#" class="text-decoration-none text-dark" onclick="closeCheckout()"><i class="bi bi-x"></i></a>
+                </div>
+            </div>
+            <div class="checkout-list">
+                <div class="row" id="checkout-list">
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <p class="fw-bold">TOTAL</p>
+                </div>
+                <div class="col text-end">
+                    <p class="fw-bold" id="price">0.00 €</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary rounded-pill px-5 checkout-button text-nowrap w-100" onclick="">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="container-fluid text-white pt-3 pb-5 footer-top">
+            <div class="container pb-5">
+                <div class="row text-center text-sm-start">
+                    <div class="col-sm-4 order-3 order-sm-1 mt-5">
+                        <div class="row mb-md-5 pb-3">
+                            <div class="col">
+                                <h1>LOGO</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>12345 North Main Street</p>
+                                <p>New York, NY 555555</p>
+                                <p>Phone: 1.800.555.6789</p>
+                                <p>Email: info@company.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 order-2 mt-5">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <h5>RECENT POSTS</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#" class="text-decoration-none text-white"><i class="bi bi-chevron-right me-1"></i>Aenean lobortis sapien enim viverra</a>
+                                <hr class="w-75 mx-auto">
+                                
+                                <a href="#" class="text-decoration-none text-white"><i class="bi bi-chevron-right me-1"></i>Duis ac massa semper maximus</a>
+                                <hr class="w-75 mx-auto">
+                                <a href="#" class="text-decoration-none text-white"><i class="bi bi-chevron-right me-1"></i>Nunc fermint nulla eu justo sem id</a>
+                                <hr class="w-75 mx-auto">
+                                <a href="#" class="text-decoration-none text-white"><i class="bi bi-chevron-right me-1"></i>Aliquam posuere magna eget nibh</a>
+                                <hr class="w-75 mx-auto">
+                                <a href="#" class="text-decoration-none text-white"><i class="bi bi-chevron-right me-1"></i>Cras ac nulla ac consecte rutrum</a>
+                                <hr class="w-75 mx-auto">
+                                <a href="#" class="text-decoration-none text-white"><i class="bi bi-chevron-right me-1"></i>Fusce mattis nunc ut aliquam</a>
+                                <hr class="w-75 mx-auto">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 order-sm-3 mt-5">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <h5>TAGS</h5>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col d-flex flex-wrap gap-2 tags" id="tags">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid footer-bottom text-white">
+            <div class="row py-4">
+                <div class="col">
+                    <p class="my-auto text-center">©Copyright 2021 | IT Projekt</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
